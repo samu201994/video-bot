@@ -7,7 +7,10 @@ const bodyParser = require('body-parser');
 const argv = require('./argv');
 const port = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
-// const mentorRoutes = require('./routes/mentor.route');
+const organisationRoutes = require('./routes/organisation.routes');
+const agentRoutes = require('./routes/agent.routes');
+const videoRoutes = require('./routes/video.routes');
+
 const mongoose = require('mongoose');
 
 const isDev = process.env.NODE_ENV !== 'production';
@@ -22,7 +25,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
-// app.use('/api', mentorRoutes);
+app.use('/api', organisationRoutes);
+app.use('/api', agentRoutes);
+app.use('/api', videoRoutes);
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
