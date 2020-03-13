@@ -50,7 +50,7 @@ const getOrganisation = (req, res) => {
     if (err) {
       return res.json({ success: false, message: 'Some Error' });
     }
-    if (Organisation.length) {
+    if (organisation.length) {
       return res.json({
         success: true,
         message: 'Organisation fetched by id successfully',

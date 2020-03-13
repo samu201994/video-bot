@@ -50,7 +50,7 @@ const getAgent = (req, res) => {
     if (err) {
       return res.json({ success: false, message: 'Some Error' });
     }
-    if (Agent.length) {
+    if (agent.length) {
       return res.json({
         success: true,
         message: 'Agent fetched by id successfully',

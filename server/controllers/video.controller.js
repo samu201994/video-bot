@@ -50,7 +50,7 @@ const getVideo = (req, res) => {
     if (err) {
       return res.json({ success: false, message: 'Some Error' });
     }
-    if (Video.length) {
+    if (video.length) {
       return res.json({
         success: true,
         message: 'Video fetched by id successfully',
@@ -69,7 +69,7 @@ const getVideosByAgent = (req, res) => {
     if (err) {
       return res.json({ success: false, message: 'Some Error' });
     }
-    if (Video.length) {
+    if (videos.length) {
       return res.json({
         success: true,
         message: 'Video fetched by id successfully',

@@ -9,36 +9,8 @@ import { ActionTypes } from './actions';
 /* eslint-disable default-case, no-param-reassign */
 
 export const initialState = {
-  bots: {
-    a1: [
-      {
-        questionType: 0,
-        question: '',
-        language: 'es',
-        video: 'default',
-      },
-      {
-        questionType: 1,
-        question: 'what is your name', // '¿Cuéntanos qué disfrutas más en informática en general?',
-        language: 'es',
-        video: '1',
-      },
-      {
-        questionType: 1,
-        question:
-          'Díganos cómo hacen usted y su equipo para reunir los requisitos',
-        language: 'es',
-        video: '2',
-      },
-      {
-        questionType: -1,
-        question: '',
-        language: 'es',
-        video: 'any',
-      },
-    ],
-  },
-  questionAsked: '',
+  activeQuestion: '',
+  activeAgentVideos: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -47,7 +19,20 @@ export default function reducer(state = initialState, action) {
       const { question } = action.payload;
       return {
         ...state,
-        questionAsked: question || '',
+        activeQuestion: question || '',
+      };
+    }
+    case ActionTypes.FETCH_AGENT_VIDEOS_SUCCESS: {
+      const { response } = action.payload;
+      return {
+        ...state,
+        activeAgentVideos: response,
+      };
+    }
+    case ActionTypes.CLEAR_QUESTION: {
+      return {
+        ...state,
+        activeQuestion: '',
       };
     }
     default:

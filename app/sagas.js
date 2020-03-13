@@ -1,9 +1,11 @@
 /* @flow */
 
-import { all } from 'redux-saga/effects';
+import { fork, all } from 'redux-saga/effects';
+
+import HomePageSaga from 'containers/HomePage/saga';
 
 function* rootSaga() {
-  yield all([]);
+  yield all([fork(HomePageSaga)]);
 }
 
 export default rootSaga;
